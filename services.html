@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — CityMate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><i class="fas fa-compass"></i> CityMate</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="guides.html">Guides</a>
+        <a href="stays.html">Stays</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+        <a href="booking-form.html" class="nav-book-btn">Book Now</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+      </div>
+      <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+<div class="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="guides.html">Guides</a><a href="stays.html">Stays</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a><a href="booking-form.html" class="nav-book-btn" style="display:inline-block;margin-top:0.5rem;">Book Now</a></div>
+
+  <section style="padding:120px 2rem 40px;max-width:var(--max-width);margin:0 auto;">
+    <div class="section-header">
+      <h2>Our Services</h2>
+      <p>Comprehensive travel solutions designed for the modern explorer.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="services-grid">
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-walking"></i></div>
+        <h3>Personal Guides</h3>
+        <p>One-on-one local experts for city tours, food walks, monument visits, and hidden gem discovery. Flexible hourly rates.</p>
+        <div style="margin-top:1rem;font-size:0.85rem;color:var(--text-dim);">From ₹500/hour</div>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-bed"></i></div>
+        <h3>Curated Stays</h3>
+        <p>Verified homestays, boutique hotels, and unique accommodations. All personally inspected by our team.</p>
+        <div style="margin-top:1rem;font-size:0.85rem;color:var(--text-dim);">From ₹800/night</div>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-map"></i></div>
+        <h3>Day Trips</h3>
+        <p>Pre-planned itineraries to nearby attractions. Transport, guide, and entry fees bundled into one price.</p>
+        <div style="margin-top:1rem;font-size:0.85rem;color:var(--text-dim);">From ₹2,500/person</div>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-utensils"></i></div>
+        <h3>Food Tours</h3>
+        <p>Street food walks, cooking classes, and fine dining recommendations from local food critics and chefs.</p>
+        <div style="margin-top:1rem;font-size:0.85rem;color:var(--text-dim);">From ₹1,200/person</div>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-camera"></i></div>
+        <h3>Photography Tours</h3>
+        <p>Golden hour shoots at iconic locations with a photographer-guide. Perfect for solo travelers and couples.</p>
+        <div style="margin-top:1rem;font-size:0.85rem;color:var(--text-dim);">From ₹3,000/session</div>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-hands-helping"></i></div>
+        <h3>Cultural Experiences</h3>
+        <p>Workshops, festivals, temple ceremonies, and village visits. Immerse yourself in authentic local culture.</p>
+        <div style="margin-top:1rem;font-size:0.85rem;color:var(--text-dim);">From ₹1,500/person</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="booking-form.html" class="btn-primary" style="font-size:1.1rem;padding:1rem 2.5rem;">
+        <i class="fas fa-calendar-check"></i> Book a Service
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer"><p>© 2025 CityMate. Crafted for travelers, by locals.</p></footer>
+  <script src="api.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+

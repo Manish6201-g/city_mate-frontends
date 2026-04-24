@@ -1,99 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Form - City Mate</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Service — CityMate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="booking-container">
-        <div class="booking-card">
-<h2><i class="fas fa-calendar-check"></i> Complete Booking</h2>
-            <h3 id="selected-item" class="accent-heading"></h3>
-<form id="bookingForm" onsubmit="submitBooking(event)">
-                <input type="hidden" id="booking-type" name="type">
-                <input type="hidden" id="booking-item-details" name="itemDetails">
-                <div class="form-group">
-                    <label>Full Name *</label>
-                    <input type="text" name="customerName" required placeholder="John Doe">
-                </div>
-                <div class="form-group">
-                    <label>Phone Number *</label>
-                    <input type="tel" name="phone" required placeholder="98xxxxxxxx">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="john@example.com">
-                </div>
-                <div class="form-group">
-                    <label>Date *</label>
-                    <input type="date" name="dates" required>
-                </div>
-                <div class="form-group">
-                    <label>Hours/Guests</label>
-                    <input type="number" name="guests" min="1" value="4" placeholder="4">
-                </div>
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-check-circle"></i> SUBMIT BOOKING
-                </button>
-            </form>
-            <a href="index.html" class="back-btn">← Back to Home</a>
-        </div>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><i class="fas fa-compass"></i> CityMate</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="guides.html">Guides</a>
+        <a href="stays.html">Stays</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+        <a href="booking-form.html" class="nav-book-btn">Book Now</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+      </div>
+      <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></div>
     </div>
+  </nav>
+<div class="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="guides.html">Guides</a><a href="stays.html">Stays</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a><a href="booking-form.html" class="nav-book-btn" style="display:inline-block;margin-top:0.5rem;">Book Now</a></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const params = new URLSearchParams(window.location.search);
-          const type = params.get('type');
-          const itemStr = params.get('item');
-          if (type && itemStr) {
-            try {
-              const item = JSON.parse(decodeURIComponent(itemStr));
-              const selectedEl = document.getElementById('selected-item');
-              if (selectedEl) selectedEl.textContent = `${item.name} (${type.toUpperCase()})`;
-              const typeEl = document.getElementById('booking-type');
-              if (typeEl) typeEl.value = type;
-              const detailsEl = document.getElementById('booking-item-details');
-              if (detailsEl) detailsEl.value = itemStr;
-              // Prefill date
-              const dateEl = document.querySelector('[name="dates"]');
-              if (dateEl) {
-                const tomorrow = new Date();
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                dateEl.value = tomorrow.toISOString().split('T')[0];
-              }
-              // Adapt guests
-              const guestsEl = document.querySelector('[name="guests"]');
-              if (guestsEl) {
-                guestsEl.placeholder = type === 'guide' ? 'Hours (default 4)' : 'Guests (default 2)';
-              }
-            } catch(e) { console.error('Parse error:', e); }
-          }
-        });
+  <div class="form-container">
+    <div class="form-card">
+      <h2><i class="fas fa-calendar-check" style="color:var(--accent);"></i> Book a Service</h2>
+      <p>Fill in your details and we'll connect you with the perfect local expert.</p>
 
-        function submitBooking(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const bookingData = {
-                id: 'B' + Date.now(),
-                ...Object.fromEntries(formData),
-                timestamp: new Date().toLocaleString('en-IN'),
-                status: 'confirmed',
-                type: formData.get('type') || 'direct',
-            };
-            
-            let bookings = JSON.parse(localStorage.getItem('cityMateBookings') || '[]');
-            bookings.unshift(bookingData);
-            localStorage.setItem('cityMateBookings', JSON.stringify(bookings, null, 2));
-            
-            alert('✅ Booking confirmed!\nID: ' + bookingData.id + '\nCheck Admin panel.');
-            event.target.closest('form').reset();
-        }
-    </script>
+      <form id="bookingForm">
+        <div class="form-group">
+          <label>Full Name <span>*</span></label>
+          <input type="text" id="b-name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label>Email <span>*</span></label>
+          <input type="email" id="b-email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" id="b-phone" placeholder="+91 98765 43210">
+        </div>
+        <div class="form-group">
+          <label>Service <span>*</span></label>
+          <select id="b-service" required>
+            <option value="">Select a service</option>
+            <option value="Personal Guide">Personal Guide</option>
+            <option value="Curated Stay">Curated Stay</option>
+            <option value="Day Trip">Day Trip</option>
+            <option value="Food Tour">Food Tour</option>
+            <option value="Photography Tour">Photography Tour</option>
+            <option value="Cultural Experience">Cultural Experience</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preferred Date <span>*</span></label>
+          <input type="date" id="b-date" required>
+        </div>
+        <div class="form-group">
+          <label>Additional Notes</label>
+          <textarea id="b-message" placeholder="Tell us about your trip, preferences, or any special requests..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="b-submit">
+          <i class="fas fa-paper-plane"></i> Submit Booking
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer"><p>© 2025 CityMate. Crafted for travelers, by locals.</p></footer>
+
+  <script type="module">
+    import { bookService } from './api.js';
+
+    document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('b-submit');
+
+      const name = document.getElementById('b-name').value.trim();
+      const email = document.getElementById('b-email').value.trim();
+      const phone = document.getElementById('b-phone').value.trim();
+      const service = document.getElementById('b-service').value;
+      const date = document.getElementById('b-date').value;
+      const message = document.getElementById('b-message').value.trim();
+
+      if (!validateEmail(email)) {
+        showToast('Please enter a valid email address', 'error');
+        return;
+      }
+
+      setLoading(btn, true);
+      try {
+        await bookService({ name, email, phone, service, date, message });
+        showToast('Booking submitted successfully! We\'ll be in touch soon.', 'success');
+        document.getElementById('bookingForm').reset();
+      } catch (err) {
+        showToast(err.message || 'Failed to submit booking', 'error');
+      } finally {
+        setLoading(btn, false);
+      }
+    });
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>
 

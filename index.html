@@ -1,233 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City Mate - Local Guides, Stays & Adventures | Book Now</title>
-    <meta name="description" content="Book verified local guides, budget stays, and discover hidden gems across India. Instant booking, best rates guaranteed.">
-    <meta name="keywords" content="local guides, budget stays, India travel, city tours, adventure booking">
-    <meta property="og:title" content="City Mate - Your Local Companion">
-    <meta property="og:description" content="Find verified guides, affordable stays, local gems - book your perfect trip!">
-    <meta property="og:image" content="data:image/svg+xml;base64,..."> <!-- Add logo -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
- </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityMate — Expert Local Guides & Travel Services</title>
+  <meta name="description" content="Book verified local guides, curated stays, and authentic experiences across India. Seamless booking, trusted reviews.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-    <header class="logo-header">
-        <div class="logo-container">
-            <i class="fas fa-city"></i>
-            <h1>City Mate</h1>
-        </div>
-    </header>
-
-<nav class="navbar">
-            <h1>City Mate</h1>
-            <ul>
-                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="guides.html"><i class="fas fa-user-friends"></i> Guides</a></li>
-                <li><a href="stays.html"><i class="fas fa-bed"></i> Stays</a></li>
-                <li><a href="places.html"><i class="fas fa-map-marker-alt"></i> Places</a></li>
-                <li><a href="budget.html"><i class="fas fa-calculator"></i> Budget</a></li>
-                <li><a href="user-login.html" style="display: none;" id="userLoginNav"><i class="fas fa-sign-in-alt"></i> User Login</a></li>
-                <li style="display: none;" id="userLogoutNav"><a href="#" onclick="userLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                <li><a href="admin.html" style="display: none;" id="adminLink"><i class="fas fa-users-cog"></i> Admin</a></li>
-            </ul>
-        </nav>
-
-    <main>
-        <section class="page-hero" data-aos="fade-up">
-            <h1>Discover India with Local Experts</h1>
-            <p class="hero-subtitle">Verified guides, budget stays, hidden gems. Pre-negotiated rates. Instant booking. Your perfect trip starts here.</p>
-            <div class="hero-buttons">
-                <a href="guides.html" class="btn btn-primary hero-cta" data-aos="zoom-in" data-aos-delay="200"> <i class="fas fa-user-friends"></i> Book Guide Now</a>
-                <a href="stays.html" class="btn btn-secondary" data-aos="zoom-in" data-aos-delay="400"> <i class="fas fa-bed"></i> Find Stays</a>
-            </div>
-            <div class="hero-stats">
-                <span><strong>500+</strong> Happy Travelers</span>
-                <span><strong>100+</strong> Verified Guides</span>
-                <span><strong>24/7</strong> Support</span>
-            </div>
-        </section>
-
-        <section id="recent-bookings-section" class="search-section">
-            <h2><i class="fas fa-list-check"></i> Your Recent Bookings</h2>
-            <div id="recent-bookings" class="results-grid"></div>
-        </section>
-
-        <section id="solutions" data-aos="fade-up">
-            <div class="section-header">
-                <h2>Why Choose City Mate?</h2>
-                <p>Everything you need for an authentic Indian adventure</p>
-            </div>
-            <div class="solution-grid">
-                <div class="card service-card" data-aos="fade-right" data-aos-delay="100">
-                    <i class="fas fa-user-check hero-icon"></i>
-                    <h3>Vetted Local Guides</h3>
-                    <p>100% verified experts with 5-star reviews. Pre-negotiated rates, instant confirmation.</p>
-                    <a href="guides.html" class="btn btn-small">Explore Guides</a>
-                </div>
-                <div class="card service-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-home hero-icon"></i>
-                    <h3>Affordable Stays</h3>
-                    <p>Budget hotels & homestays with exclusive mate rates. No hidden fees.</p>
-                    <a href="stays.html" class="btn btn-small">Find Stays</a>
-                </div>
-                <div class="card service-card" data-aos="fade-left" data-aos-delay="300">
-                    <i class="fas fa-map-marker-alt hero-icon"></i>
-                    <h3>Hidden Local Gems</h3>
-                    <p>Secret spots only locals know. Authentic experiences, away from tourist crowds.</p>
-                    <a href="places.html" class="btn btn-small">Discover Places</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials" data-aos="fade-up" data-aos-delay="400">
-            <div class="section-header">
-                <h2>What Travelers Say</h2>
-                <p>Real reviews from happy customers</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Raj was an amazing Delhi food guide! Knew all the best street food spots. Highly recommend!"</p>
-                    <div class="testimonial-author">
-                        <i class="fas fa-user-circle"></i>
-                        <span>Sarah K. <small>Delhi Food Tour</small></span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Perfect Taj Mahal sunrise experience with the guide. So much more than expected!"</p>
-                    <div class="testimonial-author">
-                        <i class="fas fa-user-circle"></i>
-                        <span>Michael L. <small>Agra Guide</small></span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Anjuna beach hut was perfect! Great location and super affordable."</p>
-                    <div class="testimonial-author">
-                        <i class="fas fa-user-circle"></i>
-                        <span>Priya S. <small>Goa Stay</small></span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="popular-items" class="search-section">
-            <h2><i class="fas fa-star"></i> Popular Picks</h2>
-            <div id="popular-grid" class="results-grid"></div>
-        </section>
-
-        <section id="budget-tool" data-aos="fade-up">
-            <div class="section-header">
-                <h2>Smart Trip Budget Calculator</h2>
-                <p>Realistic estimates for your perfect trip</p>
-            </div>
-            <div class="budget-form">
-                <label>City:
-                    <select id="city">
-                        <option value="delhi">Delhi</option>
-                        <option value="mumbai">Mumbai</option>
-                        <option value="bangalore">Bangalore</option>
-                        <option value="agra">Agra</option>
-                        <option value="jaipur">Jaipur</option>
-                        <option value="goa">Goa</option>
-                    </select>
-                </label>
-                <label>Days: <input type="number" id="days" min="1" value="3" placeholder="3"></label>
-                <button onclick="calculateBudget()" class="btn calculate-btn"><i class="fas fa-calculator"></i> Calculate Budget</button>
-            </div>
-            <div id="budget-breakdown">
-                <div id="total" class="total-display">Total Estimated Cost: ₹0</div>
-                <div id="breakdown-details"></div>
-            </div>
-        </section>
-
-        <section id="faq" data-aos="fade-up">
-            <div class="section-header">
-                <h2>Frequently Asked Questions</h2>
-            </div>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How do I book a guide or stay?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Click "Book Now" on any guide or stay card. Fill the quick form and get instant confirmation. No advance payment needed.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What payment methods do you accept?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Pay directly to guides/hotels via UPI, cash, or card. We don't handle payments - safe and transparent.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Are guides verified?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>100% verified with ID proof and reviews. Average 4.8⭐ rating. Full refund guarantee if not satisfied.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What if I need to cancel?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Free cancellation 24hrs before. Contact support anytime - 24/7 assistance for changes.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" data-aos="fade-up">
-            <div class="section-header">
-                <h2>Ready to Start Planning?</h2>
-                <p>Get personalized itinerary recommendations</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <strong>+91 98765 43210</strong>
-                        <p>24/7 Support</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <strong>hello@citymate.in</strong>
-                        <p>Reply within 2hrs</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <strong>India-wide</strong>
-                        <p>Delhi HQ</p>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <input type="text" placeholder="City / Trip Details">
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <button id="scrollToTop" class="scroll-top-btn" title="Back to Top">
-            <i class="fas fa-chevron-up"></i>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <i class="fas fa-compass"></i>
+        CityMate
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="guides.html">Guides</a>
+        <a href="stays.html">Stays</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+        <a href="booking-form.html" class="nav-book-btn">Book Now</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
         </button>
-    </main>
+      </div>
+      <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
 
-    <script src="script.js"></script>
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="guides.html">Guides</a>
+    <a href="stays.html">Stays</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="contact.html">Contact</a>
+    <a href="booking-form.html" class="nav-book-btn" style="display:inline-block;margin-top:0.5rem;">Book Now</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner" style="max-width:var(--max-width);margin:0 auto;padding:0 2rem;">
+      <div class="hero-content">
+        <h1>Discover India <span>Like a Local.</span></h1>
+        <p class="hero-subtitle">Expert guides, handpicked stays, and authentic experiences. Your journey starts with people who know every hidden corner.</p>
+        <div class="hero-btns">
+          <a href="services.html" class="btn-primary">
+            <i class="fas fa-map-marked-alt"></i> Explore Services
+          </a>
+          <a href="booking-form.html" class="btn-secondary">
+            <i class="fas fa-calendar-check"></i> Book a Guide
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-grid">
+          <div class="hero-image" style="background-image:url('https://images.unsplash.com/photo-1548013146-72479768bada?w=400&h=500&fit=crop');margin-top:2rem;"></div>
+          <div class="hero-image" style="background-image:url('https://images.unsplash.com/photo-1477587458883-47145ed94245?w=400&h=500&fit=crop');"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-bar" style="padding: 2rem;">
+    <div class="stat-item">
+      <div class="stat-value" id="stat-guides">500+</div>
+      <div class="stat-label">Local Guides</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="stat-cities">50+</div>
+      <div class="stat-label">Cities Covered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="stat-reviews">12K+</div>
+      <div class="stat-label">Happy Reviews</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="stat-rating">4.9</div>
+      <div class="stat-label">Average Rating</div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Our Services</h2>
+      <p>Everything you need for an unforgettable Indian adventure — all in one place.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-user-friends"></i></div>
+        <h3>Local Guides</h3>
+        <p>Verified experts who live and breathe the city. From food walks to heritage tours, find your perfect match.</p>
+        <a href="services.html" style="color:var(--accent);font-size:0.9rem;font-weight:500;">Explore Guides →</a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-home"></i></div>
+        <h3>Curated Stays</h3>
+        <p>Handpicked homestays and boutique hotels at every budget. Seriously good places, seriously good prices.</p>
+        <a href="services.html" style="color:var(--accent);font-size:0.9rem;font-weight:500;">Find Stays →</a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-route"></i></div>
+        <h3>Trip Planning</h3>
+        <p>Custom itineraries designed around your interests. We handle the details, you enjoy the journey.</p>
+        <a href="services.html" style="color:var(--accent);font-size:0.9rem;font-weight:500;">Plan a Trip →</a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Travel Support</h3>
+        <p>24/7 assistance, local emergency contacts, and real-time help. We've got your back, always.</p>
+        <a href="contact.html" style="color:var(--accent);font-size:0.9rem;font-weight:500;">Get Support →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <div class="section-divider"></div>
+  <section class="section">
+    <div class="section-header">
+      <h2>What Travelers Say</h2>
+      <p>Real stories from real travelers who explored with CityMate.</p>
+    </div>
+    <div class="reviews-carousel" id="home-reviews">
+      <!-- Populated by JS -->
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="reviews.html" class="btn-secondary">Read All Reviews</a>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <h2>Ready for Your Next Adventure?</h2>
+    <p>Book a local guide today and experience India through the eyes of someone who calls it home.</p>
+    <a href="booking-form.html" class="cta-btn-light">Book Now — It's Free</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 CityMate. Crafted for travelers, by locals.</p>
+  </footer>
+
+  <script type="module">
+    import { fetchReviews } from './api.js';
+
+    async function loadReviews() {
+      try {
+        const res = await fetchReviews();
+        const reviews = res.data?.slice(0, 6) || [];
+        const container = document.getElementById('home-reviews');
+        if (!reviews.length) {
+          container.innerHTML = '<p style="color:var(--text-secondary);text-align:center;width:100%;">Be the first to leave a review!</p>';
+          return;
+        }
+        container.innerHTML = reviews.map(r => `
+          <div class="review-card">
+            <div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+            <p class="review-text">"${r.comment.substring(0, 120)}${r.comment.length > 120 ? '...' : ''}"</p>
+            <div class="review-author">
+              <div class="review-avatar">${r.name[0].toUpperCase()}</div>
+              <div>
+                <div style="font-weight:600;font-size:0.9rem;">${r.name}</div>
+                <div style="font-size:0.8rem;color:var(--text-secondary);">Verified Traveler</div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.log('Reviews load failed:', err.message);
+      }
+    }
+
+    loadReviews();
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>
+

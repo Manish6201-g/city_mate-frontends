@@ -2,7 +2,7 @@
 // CityMate API Client
 // ============================================================
 
-const API_BASE_URL = window.API_URL || 'http://localhost:3001';
+const API_BASE_URL = window.API_URL || 'https://city-mate-backend-1.onrender.com';
 
 function getToken() { return localStorage.getItem('cm_token'); }
 

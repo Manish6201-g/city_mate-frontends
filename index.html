@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityMate — Expert Local Guides & Travel Services</title>
+  <meta name="description" content="Book verified local guides, curated stays, and authentic experiences across India. Seamless booking, trusted reviews.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <i class="fas fa-compass"></i>
+        CityMate
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="guides.html">Guides</a>
+        <a href="stays.html">Stays</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+        <a href="booking-form.html" class="nav-book-btn">Book Now</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+      </div>
+      <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="guides.html">Guides</a>
+    <a href="stays.html">Stays</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="contact.html">Contact</a>
+    <a href="booking-form.html" class="nav-book-btn" style="display:inline-block;margin-top:0.5rem;">Book Now</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner" style="max-width:var(--max-width);margin:0 auto;padding:0 2rem;">
+      <div class="hero-content">
+        <h1>Discover India <span>Like a Local.</span></h1>
+        <p class="hero-subtitle">Expert guides, handpicked stays, and authentic experiences. Your journey starts with people who know every hidden corner.</p>
+        <div class="hero-btns">
+          <a href="services.html" class="btn-primary">
+            <i class="fas fa-map-marked-alt"></i> Explore Services
+          </a>
+          <a href="booking-form.html" class="btn-secondary">
+            <i class="fas fa-calendar-check"></i> Book a Guide
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-grid">
+          <div class="hero-image" style="background-image:url('https://images.unsplash.com/photo-1548013146-72479768bada?w=400&h=500&fit=crop');margin-top:2rem;"></div>
+          <div class="hero-image" style="background-image:url('https://images.unsplash.com/photo-1477587458883-47145ed94245?w=400&h=500&fit=crop');"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-bar" style="padding: 2rem;">
+    <div class="stat-item">
+      <div class="stat-value" id="stat-guides">500+</div>
+      <div class="stat-label">Local Guides</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="stat-cities">50+</div>
+      <div class="stat-label">Cities Covered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="stat-reviews">12K+</div>
+      <div class="stat-label">Happy Reviews</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="stat-rating">4.9</div>
+      <div class="stat-label">Average Rating</div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Our Services</h2>
+      <p>Everything you need for an unforgettable Indian adventure — all in one place.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-user-friends"></i></div>
+        <h3>Local Guides</h3>
+        <p>Verified experts who live and breathe the city. From food walks to heritage tours, find your perfect match.</p>
+        <a href="services.html" style="color:var(--accent);font-size:0.9rem;font-weight:500;">Explore Guides →</a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-home"></i></div>
+        <h3>Curated Stays</h3>
+        <p>Handpicked homestays and boutique hotels at every budget. Seriously good places, seriously good prices.</p>
+        <a href="services.html" style="color:var(--accent);font-size:0.9rem;font-weight:500;">Find Stays →</a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-route"></i></div>
+        <h3>Trip Planning</h3>
+        <p>Custom itineraries designed around your interests. We handle the details, you enjoy the journey.</p>
+        <a href="services.html" style="color:var(--accent);font-size:0.9rem;font-weight:500;">Plan a Trip →</a>
+      </div>
+      <div class="service-card" data-animate>
+        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Travel Support</h3>
+        <p>24/7 assistance, local emergency contacts, and real-time help. We've got your back, always.</p>
+        <a href="contact.html" style="color:var(--accent);font-size:0.9rem;font-weight:500;">Get Support →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <div class="section-divider"></div>
+  <section class="section">
+    <div class="section-header">
+      <h2>What Travelers Say</h2>
+      <p>Real stories from real travelers who explored with CityMate.</p>
+    </div>
+    <div class="reviews-carousel" id="home-reviews">
+      <!-- Populated by JS -->
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="reviews.html" class="btn-secondary">Read All Reviews</a>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <h2>Ready for Your Next Adventure?</h2>
+    <p>Book a local guide today and experience India through the eyes of someone who calls it home.</p>
+    <a href="booking-form.html" class="cta-btn-light">Book Now — It's Free</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 CityMate. Crafted for travelers, by locals.</p>
+  </footer>
+
+  <script type="module">
+    import { fetchReviews } from './api.js';
+
+    async function loadReviews() {
+      try {
+        const res = await fetchReviews();
+        const reviews = res.data?.slice(0, 6) || [];
+        const container = document.getElementById('home-reviews');
+        if (!reviews.length) {
+          container.innerHTML = '<p style="color:var(--text-secondary);text-align:center;width:100%;">Be the first to leave a review!</p>';
+          return;
+        }
+        container.innerHTML = reviews.map(r => `
+          <div class="review-card">
+            <div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+            <p class="review-text">"${r.comment.substring(0, 120)}${r.comment.length > 120 ? '...' : ''}"</p>
+            <div class="review-author">
+              <div class="review-avatar">${r.name[0].toUpperCase()}</div>
+              <div>
+                <div style="font-weight:600;font-size:0.9rem;">${r.name}</div>
+                <div style="font-size:0.8rem;color:var(--text-secondary);">Verified Traveler</div>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.log('Reviews load failed:', err.message);
+      }
+    }
+
+    loadReviews();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
+

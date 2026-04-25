@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews — CityMate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><i class="fas fa-compass"></i> CityMate</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="guides.html">Guides</a>
+        <a href="stays.html">Stays</a>
+        <a href="reviews.html" class="active">Reviews</a>
+        <a href="contact.html">Contact</a>
+        <a href="booking-form.html" class="nav-book-btn">Book Now</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+      </div>
+      <div class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+<div class="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="guides.html">Guides</a><a href="stays.html">Stays</a><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a><a href="booking-form.html" class="nav-book-btn" style="display:inline-block;margin-top:0.5rem;">Book Now</a></div>
+
+  <section style="padding:120px 2rem 40px;max-width:var(--max-width);margin:0 auto;">
+    <div class="section-header">
+      <h2>Traveler Reviews</h2>
+      <p>Honest feedback from travelers who explored with CityMate.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div id="reviews-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;">
+      <div class="skeleton" style="height:200px;"></div>
+      <div class="skeleton" style="height:200px;"></div>
+      <div class="skeleton" style="height:200px;"></div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="section" style="max-width:600px;">
+    <div class="section-header">
+      <h2>Leave a Review</h2>
+      <p>Share your experience and help other travelers.</p>
+    </div>
+    <div class="form-card">
+      <form id="reviewForm">
+        <div class="form-group">
+          <label>Your Name <span>*</span></label>
+          <input type="text" id="r-name" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label>Email <span>*</span></label>
+          <input type="email" id="r-email" placeholder="john@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Rating <span>*</span></label>
+          <div style="display:flex;gap:0.5rem;font-size:1.5rem;cursor:pointer;" id="star-rating">
+            <span data-value="1">☆</span><span data-value="2">☆</span><span data-value="3">☆</span><span data-value="4">☆</span><span data-value="5">☆</span>
+          </div>
+          <input type="hidden" id="r-rating" value="0" required>
+        </div>
+        <div class="form-group">
+          <label>Your Review <span>*</span></label>
+          <textarea id="r-comment" placeholder="Tell us about your experience..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="r-submit">
+          <i class="fas fa-star"></i> Submit Review
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer"><p>© 2025 CityMate. Crafted for travelers, by locals.</p></footer>
+
+  <script type="module">
+    import { fetchReviews, submitReview } from './api.js';
+
+    let selectedRating = 0;
+    const starContainer = document.getElementById('star-rating');
+    const stars = starContainer.querySelectorAll('span');
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.dataset.value);
+        document.getElementById('r-rating').value = selectedRating;
+        updateStars();
+      });
+      star.addEventListener('mouseenter', () => {
+        const val = parseInt(star.dataset.value);
+        stars.forEach((s, i) => s.textContent = i < val ? '★' : '☆');
+      });
+    });
+    starContainer.addEventListener('mouseleave', updateStars);
+
+    function updateStars() {
+      stars.forEach((s, i) => s.textContent = i < selectedRating ? '★' : '☆');
+    }
+
+    async function loadReviews() {
+      try {
+        const res = await fetchReviews();
+        const reviews = res.data || [];
+        const container = document.getElementById('reviews-list');
+        if (!reviews.length) {
+          container.innerHTML = '<p style="color:var(--text-secondary);text-align:center;grid-column:1/-1;">No reviews yet. Be the first!</p>';
+          return;
+        }
+        container.innerHTML = reviews.map(r => `
+          <div class="review-card" style="flex:none;">
+            <div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
+            <p class="review-text">"${r.comment}"</p>
+            <div class="review-author">
+              <div class="review-avatar">${r.name[0].toUpperCase()}</div>
+              <div><div style="font-weight:600;font-size:0.9rem;">${r.name}</div><div style="font-size:0.8rem;color:var(--text-secondary);">${new Date(r.createdAt).toLocaleDateString()}</div></div>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        document.getElementById('reviews-list').innerHTML = `<p style="color:var(--error);text-align:center;grid-column:1/-1;">Failed to load reviews</p>`;
+      }
+    }
+
+    document.getElementById('reviewForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('r-submit');
+
+      if (selectedRating === 0) {
+        showToast('Please select a star rating', 'error');
+        return;
+      }
+
+      const name = document.getElementById('r-name').value.trim();
+      const email = document.getElementById('r-email').value.trim();
+      const comment = document.getElementById('r-comment').value.trim();
+
+      if (!validateEmail(email)) {
+        showToast('Please enter a valid email', 'error');
+        return;
+      }
+
+      setLoading(btn, true);
+      try {
+        await submitReview({ name, email, rating: selectedRating, comment });
+        showToast('Review submitted! Thank you for your feedback.', 'success');
+        document.getElementById('reviewForm').reset();
+        selectedRating = 0;
+        updateStars();
+        loadReviews();
+      } catch (err) {
+        showToast(err.message || 'Failed to submit review', 'error');
+      } finally {
+        setLoading(btn, false);
+      }
+    });
+
+    loadReviews();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
+
